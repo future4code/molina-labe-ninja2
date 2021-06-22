@@ -45,4 +45,10 @@ margin: 10px;
 
 `
 
-export  {InputDescricao, MainContainer, ContainerPagamento, SelectEstilizado, InputServico, BotaoOferecerServico}
+const InputDataEstilizado = styled.input`
+    width: 141px;
+    height: 15px;
+    padding: 2px;
+`
+
+export  {InputDescricao, MainContainer, ContainerPagamento, SelectEstilizado, InputServico, BotaoOferecerServico, InputDataEstilizado}
