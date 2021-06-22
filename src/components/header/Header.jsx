@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import labeninjas2 from '../../img/labeninjas2.png'
+import Botao from '../botao/Botao'
 
 const HeaderContainer = styled.div`
 display: flex;
@@ -89,7 +90,7 @@ export default class Header extends React.Component {
                         <p>O TALENTO CERTO,<br/> NO MOMENTO CERTO!</p>
                     </TextContainer> 
                     <ButtonsContainer>
-                        <button>Publicar Projeto</button>
+                        <Botao/>
                         <button>Projetos</button>
                     </ButtonsContainer>
                 </ContainerAglomerado>
