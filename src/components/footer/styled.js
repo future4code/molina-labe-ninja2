@@ -63,8 +63,10 @@ const ContainerEndereco = styled.div`
 `
 
 const Redes = styled.ul`
+    
     a{
         display: flex;
+        align-items: center;
         color: #4c4c4c;
         transition: .2s;
 
@@ -75,6 +77,7 @@ const Redes = styled.ul`
 
     span{
         font-size: 1.125em;
+        margin-top: 3px;
     }
 
     p{
