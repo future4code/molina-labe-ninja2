@@ -1,5 +1,6 @@
 import React from 'react'
 import Botao from '../components/botao/Botao'
+import ListaOrdenacao from '../components/lista-ordenacao/ListaOrdenacao'
 import MainCadastro from '../components/main-cadastro/MainCadastro'
 import MainListaFiltro from '../components/main-lista-filtro/MainListaFiltro'
 
@@ -10,7 +11,7 @@ export default class App extends React.Component {
 		return(
       <Container>
         <GlobalStyle/>
-			  <MainCadastro/>
+			  <ListaOrdenacao/>
       </Container>
 		)
 	}
