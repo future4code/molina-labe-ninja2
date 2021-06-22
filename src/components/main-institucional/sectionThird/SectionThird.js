@@ -4,7 +4,6 @@ import Botao from '../../botao/Botao'
 
 const ContainerGeral = styled.section`
     padding: 40px 100px;
-    border: 1px solid red;
     h2{
         margin-bottom: 20px;
     }
@@ -13,7 +12,6 @@ const ContainerGeral = styled.section`
 const TerceiraSecao = styled.div`
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
     img{
         margin-bottom: 10px;
     }
@@ -29,7 +27,6 @@ const TerceiraSecao = styled.div`
 `
 
 const ContainerItem = styled.div`
-    border: 1px solid red;
 `
 
 class SectionThird extends React.Component {
