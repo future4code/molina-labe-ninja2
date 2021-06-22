@@ -6,7 +6,6 @@ const Container = styled.div`
 
 const GlobalStyle = createGlobalStyle`
   * {
-    master
     margin: 0;
     padding: 0;
     box-sizing: border-box;
