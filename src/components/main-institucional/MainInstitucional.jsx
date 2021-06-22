@@ -1,10 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import {ContainerUm, TituloUm, StepOne, StepTwo, StepThree, StepFour, BotaoPublicar} from './styled'
-import SectionThird from './sectionThird/SectionThird';
-=======
 import {Container, Titulo, Step, BotaoPublicar, ContainerGeral} from './styled'
->>>>>>> master
 
 export default class MainInstitucional extends React.Component {
 	render(){
