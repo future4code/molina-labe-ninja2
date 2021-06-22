@@ -6,6 +6,7 @@ const Container = styled.div`
 
 const GlobalStyle = createGlobalStyle`
   * {
+    master
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -27,6 +28,14 @@ const GlobalStyle = createGlobalStyle`
 
     --logo-font: 'Edo', sans-serif;
     --title-font: 700 'Poppins', sans-serif;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  a{
+    text-decoration: none;
   }
 `;
 
