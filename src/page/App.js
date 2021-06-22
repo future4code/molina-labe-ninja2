@@ -10,11 +10,9 @@ export default class App extends React.Component {
 		return(
       <Container>
         <GlobalStyle/>
-			  <Botao />
-			  <Botao />
-			  <MainInstitucional/>
-			  <MainCadastro/>
-        <Footer/>
+			<MainInstitucional/>
+			<MainCadastro/>
+        	<Footer/>
       </Container>
 		)
 	}
