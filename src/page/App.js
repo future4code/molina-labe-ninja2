@@ -18,14 +18,6 @@ export default class App extends React.Component {
 		return(
       <Container>
         <GlobalStyle/>
-
-			  <MainInstitucional/>
-			  <MainCadastro/>
-        <Footer/>
-
-			  <ListaOrdenacao/>
-
-
       </Container>
 		)
 	}
