@@ -1,14 +1,18 @@
 import React from 'react'
-import MainCadastro from '../components/main-cadastro/MainCadastro'
-import Header from '../components/header/Header'
 import { Container, GlobalStyle } from './styled'
+import MainInstitucional from '../components/main-institucional/MainInstitucional'
+import Footer from '../components/footer/Footer'
+import SectionThird from '../components/main-institucional/sectionThird/SectionThird'
 
 export default class App extends React.Component {
 	render(){
 		return(
-		<Container>
-			<GlobalStyle/>
-		</Container>
+      	<Container>
+        	<GlobalStyle/>
+			<MainInstitucional/>
+			<SectionThird/>
+			<Footer/>
+      	</Container>
 		)
 	}
 }
