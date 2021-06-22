@@ -5,8 +5,8 @@ export default class Botao extends React.Component {
 	render(){
 		return(
 			<Button>
-        Publicar projeto
-      </Button>
+        		Publicar projeto
+      		</Button>
 		)
 	}
 }
