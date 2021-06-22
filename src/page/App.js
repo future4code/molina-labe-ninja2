@@ -1,5 +1,6 @@
 import React from 'react'
 import Botao from '../components/botao/Botao'
+
 import { Container, GlobalStyle } from './styled'
 
 export default class App extends React.Component {
@@ -7,7 +8,7 @@ export default class App extends React.Component {
 		return(
       <Container>
         <GlobalStyle/>
-			  <Botao />
+			  
       </Container>
 		)
 	}
