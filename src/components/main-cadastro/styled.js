@@ -16,9 +16,11 @@ align-items: center;
 const ContainerPagamento = styled.div`
 
 display: flex;
-padding: 20px;
+padding: 30px;
 align-items: center;
 justify-content: space-between;
+width: 530px;
+
 
 `
 
@@ -31,4 +33,16 @@ const SelectEstilizado = styled.select `
 
 `
 
-export  {InputDescricao, MainContainer, ContainerPagamento, SelectEstilizado}
+const InputServico = styled.input`
+    width: 300px;
+
+
+`
+
+const BotaoOferecerServico = styled.button`
+
+margin: 10px;
+
+`
+
+export  {InputDescricao, MainContainer, ContainerPagamento, SelectEstilizado, InputServico, BotaoOferecerServico}
