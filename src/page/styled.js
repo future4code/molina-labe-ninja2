@@ -5,9 +5,12 @@ const Container = styled.div`
 `;
 
 const GlobalStyle = createGlobalStyle`
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
 
   body {
     background-color: var(--white-color);
@@ -25,6 +28,14 @@ const GlobalStyle = createGlobalStyle`
 
     --logo-font: 'Edo', sans-serif;
     --title-font: 700 36px 'Poppins', sans-serif;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  a{
+    text-decoration: none;
   }
 `;
 
