@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Titulo, Step, BotaoPublicar, ContainerGeral} from './styled'
+import SectionThird from './sectionThird/SectionThird';
 
 export default class MainInstitucional extends React.Component {
 	render(){

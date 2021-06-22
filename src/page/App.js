@@ -1,18 +1,16 @@
 import React from 'react'
-import MainCadastro from '../components/main-cadastro/MainCadastro'
 import { Container, GlobalStyle } from './styled'
 import MainInstitucional from '../components/main-institucional/MainInstitucional'
 import Footer from '../components/footer/Footer'
-import ListaOrdenacao from '../components/lista-ordenacao/ListaOrdenacao'
+import SectionThird from '../components/main-institucional/sectionThird/SectionThird'
 
 export default class App extends React.Component {
 	render(){
 		return(
       	<Container>
-        <GlobalStyle/>
+        	<GlobalStyle/>
 			<MainInstitucional/>
-			{/* <MainCadastro/> */}
-			{/* <ListaOrdenacao/> */}
+			<SectionThird/>
 			<Footer/>
       	</Container>
 		)
