@@ -1,43 +1,34 @@
 import styled from "styled-components"
 
-const ContainerUm = styled.div`
+
+const ContainerGeral = styled.div`
+    padding: 0 100px;
+`
+
+const Container = styled.div`
     display:flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin-top: 15px;
 `
 
-const TituloUm = styled.p`
+const Titulo = styled.p`
     font-weight: bold;
-    font-size: 8px;
+    font-size: 16px;
     color: #4B4B4B;
+   
 `
 
-const StepOne = styled.div`
+const Step = styled.div`
+    h4 {
+        font-size: 14px;
+         margin-bottom: 10px;
+    }
     display: flex;
     flex-wrap: wrap;
-    font-size: 8px;
+    font-size: 12px;
     color: #4B4B4B;
-`
-
-const StepTwo = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 8px;
-    color: #4B4B4B;
-`
-
-const StepThree = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 8px;
-    color: #4B4B4B;
-`
-
-const StepFour= styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 8px;
-    color: #4B4B4B;
+    margin-right: 10px;
 `
 
 const BotaoPublicar = styled.button`
@@ -48,10 +39,8 @@ const BotaoPublicar = styled.button`
 `
 
 export 
-{ContainerUm, 
-TituloUm, 
-StepOne, 
-StepTwo, 
-StepThree, 
-StepFour, 
+{Container, 
+Titulo, 
+Step, 
+ContainerGeral,
 BotaoPublicar}
