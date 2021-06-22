@@ -1,5 +1,6 @@
 import React from 'react';
 import {ContainerUm, TituloUm, StepOne, StepTwo, StepThree, StepFour, BotaoPublicar} from './styled'
+import SectionThird from './sectionThird/SectionThird';
 
 export default class MainInstitucional extends React.Component {
 	render(){
@@ -38,7 +39,7 @@ export default class MainInstitucional extends React.Component {
                 </ContainerUm>
             <div>
                 <BotaoPublicar type={Text}>Publique um projeto</BotaoPublicar>
-            </div> 
+            </div>
         </div>
         )
 	}

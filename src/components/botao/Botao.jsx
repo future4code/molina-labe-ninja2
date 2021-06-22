@@ -1,11 +1,12 @@
 import React from 'react'
+import { Button } from './styled'
 
 export default class Botao extends React.Component {
 	render(){
 		return(
-			<button>
-        Publicar projeto
-      </button>
+			<Button>
+        		Publicar projeto
+      		</Button>
 		)
 	}
 }
