@@ -1,5 +1,5 @@
 import React from 'react'
-import {InputDescricao, MainContainer, ContainerPagamento, SelectEstilizado, InputServico, BotaoOferecerServico} from './styled'
+import {InputDescricao, MainContainer, ContainerPagamento, SelectEstilizado, InputServico, BotaoOferecerServico, InputDataEstilizado} from './styled'
 
 
 
@@ -30,6 +30,9 @@ export default class MainCadastro extends React.Component {
             <input placeholder="Valor"/>
 
             </ContainerPagamento>
+
+            <h4>Prazo</h4>
+            <InputDataEstilizado id="date" type="date" value="2017-06-01"/>
 
             <h4>Descrição do serviço:</h4>
             <InputDescricao/>
