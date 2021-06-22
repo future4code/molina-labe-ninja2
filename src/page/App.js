@@ -1,5 +1,5 @@
 import React from 'react'
-import Icons from '../components/icons-section/Icons'
+import SectionSecond from '../components/sectionSecond/SectionSecond'
 import { Container, GlobalStyle } from './styled'
 
 export default class App extends React.Component {
@@ -7,7 +7,7 @@ export default class App extends React.Component {
 		return(
       <Container>
         <GlobalStyle/>
-        <Icons />
+        <SectionSecond />
       </Container>
 		)
 	}
