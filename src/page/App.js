@@ -9,7 +9,7 @@ import PageList from '../components/main-list/PageList'
 export default class App extends React.Component {
 
 	state = {
-		pagina: 'Home'
+		pagina: 'PageList'
 	}
 
 	changePage = () => {
