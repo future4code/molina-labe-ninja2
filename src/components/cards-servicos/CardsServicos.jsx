@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Title, Description, Price, Span } from './styled'
+import { Container, Title, Description, Price, Span, Line } from './styled'
 import { FaPaypal, FaCreditCard, FaFileInvoiceDollar } from "react-icons/fa";
 
 export default class CardsServicos extends React.Component {
@@ -23,6 +23,7 @@ export default class CardsServicos extends React.Component {
             <p><Span color={'grey'}><FaFileInvoiceDollar/></Span> Boleto</p>
           </div>
         </Price>
+        <Line/>
       </Container>
 		)
 	}

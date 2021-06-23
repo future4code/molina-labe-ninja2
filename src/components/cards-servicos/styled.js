@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 const Container = styled.div`
-  max-width: 50vw;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 2%;
+  min-width: 45vw;
+  padding: 10px;
 `
 
 const Title = styled.div`
@@ -61,4 +60,12 @@ const Span = styled.span`
   color: ${(props) => props.color};
 `
 
-export { Container, Title, Description, Price, Span }
+const Line = styled.hr`
+  margin-bottom: 2%;
+  height: 0.01rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+`
+
+export { Container, Title, Description, Price, Span, Line }
