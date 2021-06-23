@@ -19,8 +19,11 @@ export default class App extends React.Component {
 			case 'PageList':
 				return <PageList />
 			case 'Home':
-				return <Home />
-			default: 
+				return  <Home
+					renderMainCadastro={this.renderMainCadastro}
+					renderPageList={this.renderPageList}
+				/> 
+			default:
 				return <div>Pagina não encontrada.</div>
 
 
@@ -29,6 +32,7 @@ export default class App extends React.Component {
 
 	renderMainCadastro = () => {
 		this.setState({ pagina: 'MainCadastro' })
+		console.log('cliquei')
 	}
 
 	renderPageList = () => {
@@ -37,10 +41,14 @@ export default class App extends React.Component {
 
 
 	render() {
+
 		return (
 			<Container>
 				<GlobalStyle />
-				<Header />
+				<Header
+					renderMainCadastro={this.renderMainCadastro}
+					renderPageList={this.renderPageList}
+				/>
 
 				{this.changePage()}
 				<Footer />
