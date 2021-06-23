@@ -5,10 +5,11 @@ const Container = styled.div`
     font: var(--title-font);
     font-size: 1.3rem;
     margin-left: 20px;
+    padding: 100px;
   }
 
   > div {
-    padding: 10px 20px;
+    padding: 10px 100px;
     max-width: 300px;
 
     span {
