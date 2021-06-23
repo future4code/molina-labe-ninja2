@@ -16,12 +16,13 @@ export default class PageList extends React.Component {
     this.showServicos()
   }
 
-  showServicos = () => {
-    api.get('/jobs').then((res) => {
+  showServicos = async () => {
+    try {
+      const res = await api.get('/jobs');
       this.setState({ servicos: res.data.jobs})
-    }).catch((err) => {
+    } catch(err) {
       alert(err)
-    })
+    }
   }
   
   render() {
