@@ -13,6 +13,7 @@ import {HeaderContainer,
 
 export default class Header extends React.Component {
 
+    
 
     render () {
         return (
@@ -28,15 +29,15 @@ export default class Header extends React.Component {
                 </SearchContainer>
                 <ContainerItens>
                     <ImageContainer>
-                        <img src={labeninjas2} alt="Logo da Labeninjas" />
+                        <a href='/'><img src={labeninjas2} alt="Logo da Labeninjas" /></a>
                     </ImageContainer>
                         <ContainerAglomerado>
                             <TextContainer>
                                 <p>O TALENTO CERTO,<br/> NO MOMENTO CERTO!</p>
                             </TextContainer> 
                             <ButtonsContainer>
-                                <Botao/>
-                                <button>Serviços</button>
+                                <Botao renderMainCadastro={this.props.renderMainCadastro}/>
+                                <button onClick={this.props.renderPageList}>Serviços</button>
                             </ButtonsContainer>
                         </ContainerAglomerado>
                 </ContainerItens>
