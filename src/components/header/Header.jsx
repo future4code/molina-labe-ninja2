@@ -13,6 +13,7 @@ import {HeaderContainer,
 
 export default class Header extends React.Component {
 
+    
 
     render () {
         return (
@@ -23,20 +24,21 @@ export default class Header extends React.Component {
                         variant="contained" 
                         color="primary">Buscar serviços</ButtonSearch>
                         <input
-                        placeholder="Pesquisar"
-                        type="search" />
+                            placeholder="Pesquisar"
+                            type="search" 
+                        />
                 </SearchContainer>
                 <ContainerItens>
                     <ImageContainer>
-                        <img src={labeninjas2} alt="Logo da Labeninjas" />
+                        <a href='/'><img src={labeninjas2} alt="Logo da Labeninjas" /></a>
                     </ImageContainer>
                         <ContainerAglomerado>
                             <TextContainer>
                                 <p>O TALENTO CERTO,<br/> NO MOMENTO CERTO!</p>
                             </TextContainer> 
                             <ButtonsContainer>
-                                <Botao/>
-                                <button>Serviços</button>
+                                <Botao renderMainCadastro={this.props.renderMainCadastro}/>
+                                <button onClick={this.props.renderPageList}>Serviços</button>
                             </ButtonsContainer>
                         </ContainerAglomerado>
                 </ContainerItens>

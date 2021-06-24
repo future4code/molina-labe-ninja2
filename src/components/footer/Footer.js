@@ -72,7 +72,7 @@ class Footer extends React.Component{
                     </ContainerItem>
                 </ContainerInfo>
 
-                <p>Copyright © 2020 JILIT All rights reserved.</p>
+                <p>Copyright © 2021 JILIT All rights reserved.</p>
             </ContainerFooter>
         )
     }

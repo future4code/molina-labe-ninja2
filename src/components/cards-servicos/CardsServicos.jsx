@@ -1,28 +1,28 @@
 import React from 'react'
-import { Container, Title, Description, Price, Span } from './styled'
-import { FaPaypal, FaCreditCard, FaFileInvoiceDollar } from "react-icons/fa";
+import { Container, Title, Description, Price, Span, Line } from './styled'
+import { FaMoneyCheckAlt } from "react-icons/fa";
 
 export default class CardsServicos extends React.Component {
 	render(){
 		return(
 			<Container>
         <Title>
-          <h2>Cortar a grama</h2>
-          <p>Publicado: 30/11/2021</p>
+          <h2>{this.props.titulo}</h2>
         </Title>
         <Description>
-          <h3>Descrição do projeto</h3>
-          <p>Manutenção em áreas verdes de até 1000 metros quadrados.</p>
+          <p>{this.props.descricao}</p>
         </Description>
         <Price>
-          <p>Valor: R$ 40,00</p>
+          <p>{this.props.preco}</p>
           <div>
-            <p><Span color={'blue'}><FaPaypal/></Span> PayPal</p>
-            <p><Span color={'red'}><FaCreditCard/></Span> Cartão</p>
-            <p><img src="https://i.imgur.com/XDuWV6C.png" alt="Pix" /> Pix</p>
-            <p><Span color={'grey'}><FaFileInvoiceDollar/></Span> Boleto</p>
+            {this.props.paymentMethods.map((method) => {
+              return (
+                <p><Span color={'var(--purple-color)'}><FaMoneyCheckAlt/></Span>{method}</p>
+              )
+            })}
           </div>
         </Price>
+        <Line/>
       </Container>
 		)
 	}
