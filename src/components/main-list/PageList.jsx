@@ -11,7 +11,9 @@ export default class PageList extends React.Component {
   state = {
     servicos: [],
     pesquisa: '',
-    filtroSelect: '' 
+    filtroSelect: '',
+    maxFilter: '',
+    minFilter: ''
   }
 
   componentDidMount(){
@@ -53,19 +55,19 @@ export default class PageList extends React.Component {
      });
        break;
      case "Valor de Remuneração":
-       this.state.servicos.sort((a,b)=> {
-        if(a.title < b.title) { return -1; }
-        if(a.title > b.title) { return 1; }
-       });
+       this.state.servicos.sort((a,b)=> a.price - b.price);
+       break;
      case "Prazo":
       this.state.servicos.sort((a,b)=> {
-        if(a.title < b.title) { return -1; }
-        if(a.title > b.title) { return 1; }
+        if(a.dueDate < b.dueDate) { return -1; }
+        if(a.dueDate > b.dueDate) { return 1; }
        });
      default:
        break;
    }
   }
+
+
 
   render() {
     this.ordenaSeletor()
@@ -77,23 +79,30 @@ export default class PageList extends React.Component {
         <Filter
           value={this.state.pesquisa}
 					onChangePesquisar={this.onChangePesquisar}
+          onChangeMaxFilter={this.onChangeMaxFilter}
+          onChangeMinFilter={this.onChangeMinFilter}
+          minFilter={this.state.minFilter}
+          maxFilter={this.state.maxFilter}
         />
         <CardList>
+          <ListaOrdenacao
+          onChangeFiltroSelect={this.onChangeFiltroSelect}
+          value={this.state.filtroSelect}
+          options={['Título', 'Valor de Remuneração', 'Prazo']}
+          />
+          {servicosFiltradosNome.map(({id, title, price, description, paymentMethods, dueDate})=>{
+            return(               
+              <CardServicos                 
+                key={id}                 
+                titulo={title}                 
+                preco={price}                 
+                descricao={description}                 
+                paymentMethods={paymentMethods}  
+                prazo={dueDate}             
+            />             
+            )           
+            })}
 
-          <ListaOrdenacao />
-          {servicosFiltradosNome.map(({id, title, description, price, paymentMethods, dueDate, taken})=>{
-            return(
-              <CardServicos
-                id={id}
-                service={title}
-                description={description}
-                price={price}
-                paymentMethods={paymentMethods}
-                date={dueDate}
-                taken={taken}
-              />
-            )
-          })}
         </CardList>
         <ContainerCart>
           <h2>Carrinho:</h2>
