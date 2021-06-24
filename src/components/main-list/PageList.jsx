@@ -104,7 +104,6 @@ export default class PageList extends React.Component {
             />             
             )           
             })}
-            
         </CardList>
         <ContainerCart>
           <h2>Carrinho:</h2>
