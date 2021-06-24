@@ -18,7 +18,10 @@ export default class MainCadastro extends React.Component {
     inputTitle: '',
     inputPrice: '',
     inputDescription: '',
-    inputPaymentMethods: [],
+    inputPaymentMethods: [
+    
+
+    ],
     inputDueDate: ''
 
   }
@@ -63,10 +66,7 @@ export default class MainCadastro extends React.Component {
 
   }
 
-  checked = (checkbox) => {
-    this.state.inputPaymentMethods.includes(checkbox)
-  }
-
+  
 
   render() {
 
@@ -91,10 +91,6 @@ export default class MainCadastro extends React.Component {
               <label key={checkbox}>
                 <input
                   type='checkbox'
-                  value={checkbox}
-                  checked={this.checked(checkbox)}
-                  onChange={this.handleChangeCheck}
-
                 />
                 {checkbox}
               </label>
@@ -124,7 +120,7 @@ export default class MainCadastro extends React.Component {
           value={this.state.inputDescription}
           onChange={e => this.setState({ inputDescription: e.target.value })}
         />
-        <BotaoOferecerServico /* onClick={this.createJob} */>Oferecer serviço!</BotaoOferecerServico>
+        <BotaoOferecerServico  onClick={this.createJob}>Oferecer serviço!</BotaoOferecerServico>
         {/*Botão acima é sugestão de implementação*/}
       </MainContainer>
     )
