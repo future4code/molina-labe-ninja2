@@ -10,7 +10,8 @@ import { Container, CardList, ContainerCart } from './styled'
 export default class PageList extends React.Component {
   state = {
     servicos: [],
-    pesquisa: ''
+    pesquisa: '',
+    filtroSelect: '' 
   }
 
   componentDidMount(){
@@ -35,11 +36,42 @@ export default class PageList extends React.Component {
     }
   }
 
-  render() {
-    const servicosFiltradosNome = this.state.servicos.filter((servico)=> {
-      return servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase())
+  onChangeFiltroSelect = (event) => {
+    this.setState ({
+      filtroSelect: event.target.value
     })
+  }
 
+
+  ordenaSeletor = () => {
+   switch (this.state.filtroSelect) {
+     case "Título":
+       this.state.servicos.sort((a,b)=> {
+       if(a.title < b.title) { return -1; }
+       if(a.title > b.title) { return 1; }
+      return 0;
+     });
+       break;
+     case "Valor de Remuneração":
+       this.state.servicos.sort((a,b)=> {
+        if(a.title < b.title) { return -1; }
+        if(a.title > b.title) { return 1; }
+       });
+     case "Prazo":
+      this.state.servicos.sort((a,b)=> {
+        if(a.title < b.title) { return -1; }
+        if(a.title > b.title) { return 1; }
+       });
+     default:
+       break;
+   }
+  }
+
+  render() {
+    this.ordenaSeletor()
+    console.log(this.state.servicos)
+    const servicosFiltradosNome = this.state.servicos
+    .filter((servico)=>servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase()))
     return (
       <Container>
         <Filter
@@ -47,6 +79,7 @@ export default class PageList extends React.Component {
 					onChangePesquisar={this.onChangePesquisar}
         />
         <CardList>
+
           <ListaOrdenacao />
           {servicosFiltradosNome.map(({id, title, description, price, paymentMethods, dueDate, taken})=>{
             return(
@@ -69,5 +102,6 @@ export default class PageList extends React.Component {
         </ContainerCart>
       </Container>
     )
+    
   }
 }
