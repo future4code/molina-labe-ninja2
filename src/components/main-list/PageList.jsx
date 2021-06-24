@@ -1,10 +1,12 @@
 import React from 'react'
+import api from '../../services/api'
 import CardServicos from '../cards-servicos/CardsServicos'
 import Filter from '../filter/Filter'
 import ListaOrdenacao from '../lista-ordenacao/ListaOrdenacao'
 import axios from 'axios'
+import Cart from '../cart/Cart'
 
-import { Container, CardList } from './styled'
+import { Container, CardList, ContainerCart } from './styled'
 
 export default class PageList extends React.Component {
   state = {
@@ -64,6 +66,11 @@ export default class PageList extends React.Component {
             )
           })}
         </CardList>
+        <ContainerCart>
+          <h2>Carrinho:</h2>
+          <Cart />
+          <Cart />
+        </ContainerCart>
       </Container>
     )
   }
