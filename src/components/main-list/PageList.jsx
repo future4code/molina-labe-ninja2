@@ -53,22 +53,29 @@ export default class PageList extends React.Component {
 
   ordenaSeletor = () => {
    switch (this.state.filtroSelect) {
-     case "title":
-       this.state.servicos.sort((a,b)=> a.title > b.title)
+     case "Título":
+       this.state.servicos.sort((a,b)=> {
+       if(a.title < b.title) { return -1; }
+       if(a.title > b.title) { return 1; }
+      return 0;
+     });
        break;
-     case "pay":
-       this.state.servicos.sort((a,b)=> a.price - b.price)
-     case "deadline":
-       
+     case "Valor de Remuneração":
+       this.state.servicos.sort((a,b)=> {
+        if(a.title < b.title) { return -1; }
+        if(a.title > b.title) { return 1; }
+       });
+     case "Prazo":
+      this.state.servicos.sort((a,b)=> {
+        if(a.title < b.title) { return -1; }
+        if(a.title > b.title) { return 1; }
+       });
      default:
        break;
    }
   }
 
   render() {
-    const { servicos } = this.state;
-    const servicosOrdenadosByTitle = servicos.sort((a,b) => a.title > b.title);
-    console.log(servicosOrdenadosByTitle);
     this.ordenaSeletor()
     console.log(this.state.servicos)
     const servicosFiltradosNome = this.state.servicos
