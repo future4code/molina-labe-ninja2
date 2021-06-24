@@ -74,7 +74,6 @@ export default class PageList extends React.Component {
     console.log(this.state.servicos)
     const servicosFiltradosNome = this.state.servicos
     .filter((servico)=>servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase()))
-    
     return (
       <Container>
         <Filter
@@ -103,6 +102,7 @@ export default class PageList extends React.Component {
             />             
             )           
             })}
+
         </CardList>
         <ContainerCart>
           <h2>Carrinho:</h2>
