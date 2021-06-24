@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const MainContainer = styled.div`
   border: 1px solid #494949;
   padding: 20px;
-  height: 300px;
+  height: 50vh;
   border-radius: 3px;
   display: flex;
   flex-direction: column;

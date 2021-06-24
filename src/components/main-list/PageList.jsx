@@ -11,7 +11,8 @@ import { Container, CardList, ContainerCart } from './styled'
 export default class PageList extends React.Component {
   state = {
     servicos: [],
-    pesquisa: ''
+    pesquisa: '',
+    filtroSelect: '' 
   }
 
   componentDidMount(){
@@ -43,10 +44,43 @@ export default class PageList extends React.Component {
     }
   }
 
+  onChangeFiltroSelect = (event) => {
+    this.setState ({
+      filtroSelect: event.target.value
+    })
+  }
+
+
+  ordenaSeletor = () => {
+   switch (this.state.filtroSelect) {
+     case "Título":
+       this.state.servicos.sort((a,b)=> {
+       if(a.title < b.title) { return -1; }
+       if(a.title > b.title) { return 1; }
+      return 0;
+     });
+       break;
+     case "Valor de Remuneração":
+       this.state.servicos.sort((a,b)=> {
+        if(a.title < b.title) { return -1; }
+        if(a.title > b.title) { return 1; }
+       });
+     case "Prazo":
+      this.state.servicos.sort((a,b)=> {
+        if(a.title < b.title) { return -1; }
+        if(a.title > b.title) { return 1; }
+       });
+     default:
+       break;
+   }
+  }
+
   render() {
+    this.ordenaSeletor()
+    console.log(this.state.servicos)
     const servicosFiltradosNome = this.state.servicos
     .filter((servico)=>servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase()))
-
+    
     return (
       <Container>
         <Filter
@@ -54,17 +88,22 @@ export default class PageList extends React.Component {
 					onChangePesquisar={this.onChangePesquisar}
         />
         <CardList>
-          <ListaOrdenacao />
-          {servicosFiltradosNome.map(({id, title, price, description})=>{
-            return(
-              <CardServicos
-                key={id}
-                titulo={title}
-                preco={price}
-                descricao={description}
-              />
-            )
-          })}
+          <ListaOrdenacao
+          onChangeFiltroSelect={this.onChangeFiltroSelect}
+          value={this.state.filtroSelect}
+          options={['Título', 'Valor de Remuneração', 'Prazo']}
+          />
+          {servicosFiltradosNome.map(({id, title, price, description, paymentMethods})=>{
+            return(               
+              <CardServicos                 
+                key={id}                 
+                titulo={title}                 
+                preco={price}                 
+                descricao={description}                 
+                paymentMethods={paymentMethods}               
+            />             
+            )           
+            })}
         </CardList>
         <ContainerCart>
           <h2>Carrinho:</h2>
@@ -73,5 +112,6 @@ export default class PageList extends React.Component {
         </ContainerCart>
       </Container>
     )
+    
   }
 }

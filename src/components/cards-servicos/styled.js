@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   max-width: 45vw;
+  width: 25vw;
   padding: 10px;
+  margin: 0 60px;
 `
 
 const Title = styled.div`
