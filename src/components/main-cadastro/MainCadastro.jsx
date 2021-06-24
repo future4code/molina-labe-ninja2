@@ -1,11 +1,10 @@
 import React from 'react'
-import axios from 'axios'
+import api from '../../services/api'
 /* import {baseURL, headers} from '../src/services/api'  */
 import {
   InputDescricao,
   MainContainer,
   ContainerPagamento,
-  SelectEstilizado,
   InputServico,
   BotaoOferecerServico,
   InputDataEstilizado
@@ -23,37 +22,40 @@ export default class MainCadastro extends React.Component {
 
   
 
-  onChangeInputServico = (e) => {
-    this.setState({inputTitle: e.target.value})
-
-  }
-
-  onChangeInputValor = (e) => {
-    this.setState({inputPrice: e.target.value})
-  }
-
-  onChangeInputDescricao = (e) => {
-    this.setState({inputDescription: e.target.value})
-  }
-
-  onChangePrazo = (e) => {
-    this.setState({inputDueDate: e.target.value})
-  }
-
   onChangeCheckbox = (e) => {
     this.setState({inputPaymentMethods: e.target.value})
   }
-/* 
-  createJob = () => {
-    axios.post(baseURL, headers) 
-    
-    .then() 
-    
-    .catch()
 
-  } */
+    createJob = () =>{
+      try {
+        api.post('/jobs', {
+          title: this.state.inputTitle,
+          description: this.state.inputDescription,
+          price: this.state.inputPrice,
+          paymentMethods: [...this.state.inputPaymentMethods],
+          dueDate: this.state.dueDate
+
+        })
+        alert('Serviço cadastrado com sucesso!')
+        this.setState({
+          inputTitle: '',
+          inputPrice: '',
+          inputDescription: '',
+          inputPaymentMethods: [], 
+          inputDueDate: ''
+
+        })
+      }catch(err){
+        alert(err)
+      }
+
+      }
+ 
+  
 
   render() {
+
+    
 
 
 
@@ -66,7 +68,7 @@ export default class MainCadastro extends React.Component {
         <InputServico 
           placeholder="Nome do serviço"
           value={this.state.inputTitle}
-          onChange={this.onChangeInputServico}
+          onChange={e => this.setState({inputTitle: e.target.value})}
         
         />
         <ContainerPagamento>
@@ -99,7 +101,7 @@ export default class MainCadastro extends React.Component {
           <input 
             placeholder="Valor" 
             value={this.state.inputPrice}
-            onChange={this.onChangeInputValor}
+            onChange={e => this.setState({inputPrice: e.target.value})}
 
           />
         </ContainerPagamento>
@@ -108,14 +110,14 @@ export default class MainCadastro extends React.Component {
         id="date" 
         type="date" 
         value={this.state.inputDueDate}
-        onChange={this.onChangePrazo}
+        onChange={e => this.setState({inputDueDate: e.target.value})}
         />
         <h4>Descrição do serviço:</h4>
         <InputDescricao 
           value={this.state.inputDescription}
-          onChange={this.onChangeInputDescricao}
+          onChange={e => this.setState({inputDescription: e.target.value}) }
         />
-        <BotaoOferecerServico>Oferecer serviço!</BotaoOferecerServico>
+        <BotaoOferecerServico /* onClick={this.createJob} */>Oferecer serviço!</BotaoOferecerServico>
         {/*Botão acima é sugestão de implementação*/}
       </MainContainer>
     )

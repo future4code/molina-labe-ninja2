@@ -19,12 +19,6 @@ const ContainerPagamento = styled.div`
   width: 530px;
 `
 
-const SelectEstilizado = styled.select `
-  width: 100px;
-  height: 23px;
-  padding: 2px;
-`
-
 const InputServico = styled.input`
   width: 300px;
 `
@@ -43,7 +37,6 @@ export  {
   InputDescricao,
   MainContainer,
   ContainerPagamento,
-  SelectEstilizado,
   InputServico,
   BotaoOferecerServico,
   InputDataEstilizado
