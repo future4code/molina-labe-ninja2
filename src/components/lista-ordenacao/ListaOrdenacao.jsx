@@ -1,6 +1,8 @@
+
 import { options } from 'colorette'
 import React from 'react'
 import { MainContainer } from './styled'
+
 
 export default class ListaOrdenacao extends React.Component {
   
@@ -21,4 +23,4 @@ export default class ListaOrdenacao extends React.Component {
       </MainContainer>
     )
   }
-}
+} 

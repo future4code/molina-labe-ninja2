@@ -1,15 +1,16 @@
 import React from 'react'
-import axios from 'axios'
+import api from '../../services/api'
 /* import {baseURL, headers} from '../src/services/api'  */
 import {
   InputDescricao,
   MainContainer,
   ContainerPagamento,
-  SelectEstilizado,
   InputServico,
   BotaoOferecerServico,
   InputDataEstilizado
 } from './styled'
+
+const arrayCheckBox = ['Picpay', 'Pix', 'Credito', 'Boleto']
 
 export default class MainCadastro extends React.Component {
 
@@ -17,105 +18,113 @@ export default class MainCadastro extends React.Component {
     inputTitle: '',
     inputPrice: '',
     inputDescription: '',
-    inputPaymentMethods: [], 
+    inputPaymentMethods: [],
     inputDueDate: ''
-  }
-
-  
-
-  onChangeInputServico = (e) => {
-    this.setState({inputTitle: e.target.value})
 
   }
 
-  onChangeInputValor = (e) => {
-    this.setState({inputPrice: e.target.value})
-  }
 
-  onChangeInputDescricao = (e) => {
-    this.setState({inputDescription: e.target.value})
-  }
 
-  onChangePrazo = (e) => {
-    this.setState({inputDueDate: e.target.value})
-  }
+  handleChangeCheck = ((event) => {
+    if (event.target.checked) {
+      this.setState({ inputPaymentMethods: [...this.state.inputPaymentMethods, event.target.value] })
+    } else {
+      this.setState(this.state.inputPaymentMethods.filter((checkbox) => {
+        return checkbox !== event.target.value
+      }))
+    }
+  })
 
-  onChangeCheckbox = (e) => {
-    this.setState({inputPaymentMethods: e.target.value})
-  }
-/* 
+
+
   createJob = () => {
-    axios.post(baseURL, headers) 
-    
-    .then() 
-    
-    .catch()
+    try {
+      api.post('/jobs', {
+        title: this.state.inputTitle,
+        description: this.state.inputDescription,
+        price: this.state.inputPrice,
+        paymentMethods: [...this.state.inputPaymentMethods],
+        dueDate: this.state.dueDate
 
-  } */
+      })
+      alert('Serviço cadastrado com sucesso!')
+      this.setState({
+        inputTitle: '',
+        inputPrice: '',
+        inputDescription: '',
+        inputPaymentMethods: [],
+        inputDueDate: ''
+
+
+      })
+    } catch (err) {
+      alert(err)
+    }
+
+  }
+
+  checked = (checkbox) => {
+    this.state.inputPaymentMethods.includes(checkbox)
+  }
+
 
   render() {
 
-
-
+    console.log(this.state.inputPaymentMethods)
 
     return (
       <MainContainer>
         <h4>
           Nome do Serviço
         </h4>
-        <InputServico 
+        <InputServico
           placeholder="Nome do serviço"
           value={this.state.inputTitle}
-          onChange={this.onChangeInputServico}
-        
+          onChange={e => this.setState({ inputTitle: e.target.value })}
+
         />
         <ContainerPagamento>
           <h4>Métodos de pagamento</h4>
-          <input 
-          type='checkbox'
-          value={this.state.inputPaymentMethods}
-          onChange={this.onChangeCheckbox}
-          />
-          <label>Picpay</label>
-          <input 
-          type='checkbox'
-          value={this.state.inputPaymentMethods}
-          onChange={this.onChangeCheckbox}
-          />
-          <label>Pix</label>
-          <input 
-          type='checkbox'
-          value={this.state.inputPaymentMethods}
-          onChange={this.onChangeCheckbox}
-          />
-          <label>Crédito</label>
-          <input 
-          type='checkbox'
-          value={this.state.inputPaymentMethods}
-          onChange={this.onChangeCheckbox}
-          />
-          <label>Boleto</label>
+
+          {arrayCheckBox.map((checkbox) => {
+            return (
+              <label key={checkbox}>
+                <input
+                  type='checkbox'
+                  value={checkbox}
+                  checked={this.checked(checkbox)}
+                  onChange={this.handleChangeCheck}
+
+                />
+                {checkbox}
+              </label>
+
+            )
+          })
+          }
+
+
           <h4>Valor</h4>
-          <input 
-            placeholder="Valor" 
+          <input
+            placeholder="Valor"
             value={this.state.inputPrice}
-            onChange={this.onChangeInputValor}
+            onChange={e => this.setState({ inputPrice: e.target.value })}
 
           />
         </ContainerPagamento>
         <h4>Prazo</h4>
-        <InputDataEstilizado 
-        id="date" 
-        type="date" 
-        value={this.state.inputDueDate}
-        onChange={this.onChangePrazo}
+        <InputDataEstilizado
+          id="date"
+          type="date"
+          value={this.state.inputDueDate}
+          onChange={e => this.setState({ inputDueDate: e.target.value })}
         />
         <h4>Descrição do serviço:</h4>
-        <InputDescricao 
+        <InputDescricao
           value={this.state.inputDescription}
-          onChange={this.onChangeInputDescricao}
+          onChange={e => this.setState({ inputDescription: e.target.value })}
         />
-        <BotaoOferecerServico>Oferecer serviço!</BotaoOferecerServico>
+        <BotaoOferecerServico /* onClick={this.createJob} */>Oferecer serviço!</BotaoOferecerServico>
         {/*Botão acima é sugestão de implementação*/}
       </MainContainer>
     )
