@@ -55,7 +55,7 @@ export default class MainCadastro extends React.Component {
 
   render() {
 
-    console.log('Titulo', this.state.inputTitle, 'Preço', this.state.inputPrice, 'Descrição', this.state.inputDescription, 'Pagamento', this.state.inputPaymentMethods, 'prazo', this.state.inputDueDate)
+
 
 
     return (
