@@ -15,11 +15,20 @@ export default class Filter extends React.Component {
         </ItemContainer>
         <ItemContainer>
           <label>Valor mínimo</label>
-          <input type="number" />
+          <input 
+          type="number"
+          min='0'
+          value={this.props.minFilter}
+          onChange={this.props.onChangeMinFilter}
+          />
         </ItemContainer>
         <ItemContainer>
           <label>Valor máximo</label>
-          <input type="number" />
+          <input 
+          type="number"
+          min='0'
+          value={this.props.maxFilter}
+          onChange={this.props.onChangeMaxFilter} />
         </ItemContainer>
       </MainContainer>
     )

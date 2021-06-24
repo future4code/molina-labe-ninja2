@@ -3,7 +3,6 @@ import api from '../../services/api'
 import CardServicos from '../cards-servicos/CardsServicos'
 import Filter from '../filter/Filter'
 import ListaOrdenacao from '../lista-ordenacao/ListaOrdenacao'
-import axios from 'axios'
 import Cart from '../cart/Cart'
 
 import { Container, CardList, ContainerCart } from './styled'
@@ -12,7 +11,9 @@ export default class PageList extends React.Component {
   state = {
     servicos: [],
     pesquisa: '',
-    filtroSelect: '' 
+    filtroSelect: '',
+    maxFilter: '',
+    minFilter: ''
   }
 
   componentDidMount(){
@@ -25,16 +26,9 @@ export default class PageList extends React.Component {
 		})
 	}
 
-  url = 'https://labeninjas.herokuapp.com'
-  headers = {
-    headers: {
-        Authorization: 'e2190c39-7930-4db4-870b-bed0e5e4b88e'
-    }
-  }
-
   pegarServicos  = async ()=>{
     try {
-      const response = await axios.get(`${this.url}/jobs`, this.headers)
+      const response = await api.get('jobs')
       this.setState({
         servicos: response.data.jobs
       })
@@ -61,19 +55,19 @@ export default class PageList extends React.Component {
      });
        break;
      case "Valor de Remuneração":
-       this.state.servicos.sort((a,b)=> {
-        if(a.title < b.title) { return -1; }
-        if(a.title > b.title) { return 1; }
-       });
+       this.state.servicos.sort((a,b)=> a.price - b.price);
+       break;
      case "Prazo":
       this.state.servicos.sort((a,b)=> {
-        if(a.title < b.title) { return -1; }
-        if(a.title > b.title) { return 1; }
+        if(a.dueDate < b.dueDate) { return -1; }
+        if(a.dueDate > b.dueDate) { return 1; }
        });
      default:
        break;
    }
   }
+
+
 
   render() {
     this.ordenaSeletor()
@@ -86,6 +80,10 @@ export default class PageList extends React.Component {
         <Filter
           value={this.state.pesquisa}
 					onChangePesquisar={this.onChangePesquisar}
+          onChangeMaxFilter={this.onChangeMaxFilter}
+          onChangeMinFilter={this.onChangeMinFilter}
+          minFilter={this.state.minFilter}
+          maxFilter={this.state.maxFilter}
         />
         <CardList>
           <ListaOrdenacao
@@ -93,14 +91,15 @@ export default class PageList extends React.Component {
           value={this.state.filtroSelect}
           options={['Título', 'Valor de Remuneração', 'Prazo']}
           />
-          {servicosFiltradosNome.map(({id, title, price, description, paymentMethods})=>{
+          {servicosFiltradosNome.map(({id, title, price, description, paymentMethods, dueDate})=>{
             return(               
               <CardServicos                 
                 key={id}                 
                 titulo={title}                 
                 preco={price}                 
                 descricao={description}                 
-                paymentMethods={paymentMethods}               
+                paymentMethods={paymentMethods}  
+                prazo={dueDate}             
             />             
             )           
             })}

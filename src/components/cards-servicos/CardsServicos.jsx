@@ -9,6 +9,7 @@ export default class CardsServicos extends React.Component {
         <Title>
           <h2>{this.props.titulo}</h2>
         </Title>
+        <p>{this.props.prazo}</p>
         <Description>
           <p>{this.props.descricao}</p>
         </Description>
