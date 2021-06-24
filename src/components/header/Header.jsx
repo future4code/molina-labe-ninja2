@@ -24,8 +24,9 @@ export default class Header extends React.Component {
                         variant="contained" 
                         color="primary">Buscar serviços</ButtonSearch>
                         <input
-                        placeholder="Pesquisar"
-                        type="search" />
+                            placeholder="Pesquisar"
+                            type="search" 
+                        />
                 </SearchContainer>
                 <ContainerItens>
                     <ImageContainer>

@@ -7,15 +7,13 @@ export default class CardsServicos extends React.Component {
 		return(
 			<Container>
         <Title>
-          <h2>Cortar a grama</h2>
-          <p>Publicado: 30/11/2021</p>
+          <h2>{this.props.titulo}</h2>
         </Title>
         <Description>
-          <h3>Descrição do projeto</h3>
-          <p>Manutenção em áreas verdes de até 1000 metros quadrados.</p>
+          <p>{this.props.descricao}</p>
         </Description>
         <Price>
-          <p>Valor: R$ 40,00</p>
+          <p>{this.props.preco}</p>
           <div>
             <p><Span color={'blue'}><FaPaypal/></Span> PayPal</p>
             <p><Span color={'red'}><FaCreditCard/></Span> Cartão</p>

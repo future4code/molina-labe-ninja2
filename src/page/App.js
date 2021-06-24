@@ -9,7 +9,7 @@ import PageList from '../components/main-list/PageList'
 export default class App extends React.Component {
 
 	state = {
-		pagina: 'Home'
+		pagina: 'Home',
 	}
 
 	changePage = () => {
@@ -37,8 +37,7 @@ export default class App extends React.Component {
 
 	renderPageList = () => {
 		this.setState({ pagina: 'PageList' })
-	}
-
+	} 
 
 	render() {
 
