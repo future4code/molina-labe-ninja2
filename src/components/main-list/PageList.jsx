@@ -55,13 +55,14 @@ export default class PageList extends React.Component {
         />
         <CardList>
           <ListaOrdenacao />
-          {servicosFiltradosNome.map(({id, title, price, description})=>{
+          {servicosFiltradosNome.map(({id, title, price, description, paymentMethods})=>{
             return(
               <CardServicos
                 key={id}
                 titulo={title}
                 preco={price}
                 descricao={description}
+                paymentMethods={paymentMethods}
               />
             )
           })}
