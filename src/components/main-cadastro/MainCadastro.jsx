@@ -17,7 +17,7 @@ export default class MainCadastro extends React.Component {
     inputTitle: '',
     inputPrice: '',
     inputDescription: '',
-    /* inputPaymentMethods: [], */ //Pesquisar como colocar no value do select
+    inputPaymentMethods: [], 
     inputDueDate: ''
   }
 
@@ -39,6 +39,10 @@ export default class MainCadastro extends React.Component {
   onChangePrazo = (e) => {
     this.setState({inputDueDate: e.target.value})
   }
+
+  onChangeCheckbox = (e) => {
+    this.setState({inputPaymentMethods: e.target.value})
+  }
 /* 
   createJob = () => {
     axios.post(baseURL, headers) 
@@ -50,6 +54,8 @@ export default class MainCadastro extends React.Component {
   } */
 
   render() {
+
+    console.log('Titulo', this.state.inputTitle, 'Preço', this.state.inputPrice, 'Descrição', this.state.inputDescription, 'Pagamento', this.state.inputPaymentMethods, 'prazo', this.state.inputDueDate)
 
 
     return (
@@ -64,13 +70,31 @@ export default class MainCadastro extends React.Component {
         
         />
         <ContainerPagamento>
-          <h4>Método de pagamento</h4>
-          <SelectEstilizado>
-            <option>Picpay</option>
-            <option>PIX</option>
-            <option>Crédito</option>
-            <option>Boleto</option>
-          </SelectEstilizado>
+          <h4>Métodos de pagamento</h4>
+          <input 
+          type='checkbox'
+          value={this.state.inputPaymentMethods}
+          onChange={this.onChangeCheckbox}
+          />
+          <label>Picpay</label>
+          <input 
+          type='checkbox'
+          value={this.state.inputPaymentMethods}
+          onChange={this.onChangeCheckbox}
+          />
+          <label>Pix</label>
+          <input 
+          type='checkbox'
+          value={this.state.inputPaymentMethods}
+          onChange={this.onChangeCheckbox}
+          />
+          <label>Crédito</label>
+          <input 
+          type='checkbox'
+          value={this.state.inputPaymentMethods}
+          onChange={this.onChangeCheckbox}
+          />
+          <label>Boleto</label>
           <h4>Valor</h4>
           <input 
             placeholder="Valor" 
