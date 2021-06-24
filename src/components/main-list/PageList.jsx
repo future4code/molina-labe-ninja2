@@ -3,7 +3,6 @@ import api from '../../services/api'
 import CardServicos from '../cards-servicos/CardsServicos'
 import Filter from '../filter/Filter'
 import ListaOrdenacao from '../lista-ordenacao/ListaOrdenacao'
-import axios from 'axios'
 import Cart from '../cart/Cart'
 
 import { Container, CardList, ContainerCart } from './styled'
@@ -24,16 +23,9 @@ export default class PageList extends React.Component {
 		})
 	}
 
-  url = 'https://labeninjas.herokuapp.com'
-  headers = {
-    headers: {
-        Authorization: 'e2190c39-7930-4db4-870b-bed0e5e4b88e'
-    }
-  }
-
   pegarServicos  = async ()=>{
     try {
-      const response = await axios.get(`${this.url}/jobs`, this.headers)
+      const response = await api.get('jobs')
       this.setState({
         servicos: response.data.jobs
       })
@@ -44,8 +36,9 @@ export default class PageList extends React.Component {
   }
 
   render() {
-    const servicosFiltradosNome = this.state.servicos
-    .filter((servico)=>servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase()))
+    const servicosFiltradosNome = this.state.servicos.filter((servico)=> {
+      return servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase())
+    })
 
     return (
       <Container>
@@ -55,13 +48,16 @@ export default class PageList extends React.Component {
         />
         <CardList>
           <ListaOrdenacao />
-          {servicosFiltradosNome.map(({id, title, price, description})=>{
+          {servicosFiltradosNome.map(({id, title, description, price, paymentMethods, dueDate, taken})=>{
             return(
               <CardServicos
-                key={id}
-                titulo={title}
-                preco={price}
-                descricao={description}
+                id={id}
+                service={title}
+                description={description}
+                price={price}
+                paymentMethods={paymentMethods}
+                date={dueDate}
+                taken={taken}
               />
             )
           })}
