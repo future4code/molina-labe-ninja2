@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import { MainContainer, MainCadastro } from './styled'
 
 export default class ListaOrdenacao extends React.Component {
@@ -43,4 +43,4 @@ export default class ListaOrdenacao extends React.Component {
       </MainContainer>
     )
   }
-}
+} */
