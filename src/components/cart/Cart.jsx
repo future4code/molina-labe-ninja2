@@ -10,7 +10,7 @@ export default class Cart extends React.Component {
           <div>
             <h4>{this.props.title}</h4>
           </div>
-          <Price>{this.props.price}</Price>
+          <Price>R$ {this.props.price},00</Price>
           <Button onClick={this.props.onClickDelete}><FaTrash/></Button>
         </Main>
         <Line/>

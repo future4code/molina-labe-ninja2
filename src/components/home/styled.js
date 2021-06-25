@@ -106,6 +106,11 @@ const ContainerGeralSectionThird = styled.section`
     h2 {
       font: var(--title-font);
       font-size: 1.5rem;
+
+      span {
+        font-family: "Edo", sans-serif;
+        color: var(--purple-color);
+      }
     }
   }
 `
@@ -138,6 +143,11 @@ const TerceiraSecao = styled.div`
 
     p {
       font-size: 1rem;
+
+      span {
+        font-family: "Edo", sans-serif;
+        color: var(--purple-color);
+      }
     }
   }
 `

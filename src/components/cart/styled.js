@@ -13,13 +13,14 @@ const Main = styled.div`
     font-size: 0.7rem;
   }
 
-  span {
-    font-size: 0.8rem;
-  }
-
   > div {
     width: 70%;
     margin-left: 3%;
+
+    h4 {
+      font-weight: 500;
+      font-size: 1rem;
+    }
   }
 `
 
