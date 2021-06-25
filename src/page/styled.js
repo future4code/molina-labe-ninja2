@@ -1,14 +1,9 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-const Container = styled.div`
-  
-`;
-
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
 
   body {
@@ -38,4 +33,20 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export { Container, GlobalStyle }
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100vw;
+  overflow: hidden;
+`;
+
+const Line = styled.hr`
+  width: 80%;
+  height: 0.01rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+`
+
+export { Container, GlobalStyle, Line }
