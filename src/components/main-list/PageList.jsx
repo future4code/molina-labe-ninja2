@@ -12,8 +12,8 @@ export default class PageList extends React.Component {
     servicos: [],
     pesquisa: '',
     filtroSelect: '',
-    maxFilter: '',
-    minFilter: ''
+    maxFilter: 10000,
+    minFilter: 0
   }
 
   componentDidMount(){
@@ -25,6 +25,14 @@ export default class PageList extends React.Component {
 			pesquisa: event.target.value
 		})
 	}
+
+  onChangeMaxFilter = (event) => {
+    this.setState({maxFilter: event.target.value})
+  }
+
+  onChangeMinFilter = (event) => {
+    this.setState({minFilter: event.target.value})
+  }
 
   pegarServicos  = async ()=>{
     try {
@@ -67,13 +75,15 @@ export default class PageList extends React.Component {
    }
   }
 
-
-
   render() {
     this.ordenaSeletor()
-    console.log(this.state.servicos)
-    const servicosFiltradosNome = this.state.servicos
-    .filter((servico)=>servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase()))
+
+    const servicosFiltrados = this.state.servicos
+      .filter((servico) => servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase()))
+      .filter((servico) => servico.price < this.state.maxFilter)
+      .filter((servico) => servico.price > this.state.minFilter)
+  
+
     return (
       <Container>
         <Filter
@@ -90,7 +100,7 @@ export default class PageList extends React.Component {
           value={this.state.filtroSelect}
           options={['Título', 'Valor de Remuneração', 'Prazo']}
           />
-          {servicosFiltradosNome.map(({id, title, price, description, paymentMethods, dueDate})=>{
+          {servicosFiltrados.map(({id, title, price, description, paymentMethods, dueDate})=>{
             return(               
               <CardServicos                 
                 key={id}                 
@@ -98,7 +108,7 @@ export default class PageList extends React.Component {
                 preco={price}                 
                 descricao={description}                 
                 paymentMethods={paymentMethods}  
-                prazo={dueDate}             
+                prazo={dueDate}         
             />             
             )           
             })}

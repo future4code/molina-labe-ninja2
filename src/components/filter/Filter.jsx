@@ -16,7 +16,8 @@ export default class Filter extends React.Component {
         <ItemContainer>
           <label>Valor mínimo</label>
           <input 
-          type="number"
+          placeholder='0'
+          type="text"
           min='0'
           value={this.props.minFilter}
           onChange={this.props.onChangeMinFilter}
@@ -25,7 +26,8 @@ export default class Filter extends React.Component {
         <ItemContainer>
           <label>Valor máximo</label>
           <input 
-          type="number"
+          placeholder='0'
+          type="text"
           min='0'
           value={this.props.maxFilter}
           onChange={this.props.onChangeMaxFilter} />
