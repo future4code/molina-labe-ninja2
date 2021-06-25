@@ -9,12 +9,12 @@ export default class CardsServicos extends React.Component {
         <Title>
           <h2>{this.props.titulo}</h2>
         </Title>
-        <p>{this.props.prazo}</p>
+          <p>Prazo: {this.props.prazo}</p>
         <Description>
-          <p>{this.props.descricao}</p>
+          <p>{this.props.description}</p>
         </Description>
         <Price>
-          <p>{this.props.preco}</p>
+          <p>R$ {this.props.preco},00</p>
           <div>
             {this.props.paymentMethods.map((method) => {
               return (
