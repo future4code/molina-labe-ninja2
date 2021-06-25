@@ -1,6 +1,6 @@
 import React from 'react'
-import api from '../../services/api'
-/* import {baseURL, headers} from '../src/services/api'  */
+ import api from '../../services/api' 
+
 import {
   InputDescricao,
   MainContainer,
@@ -10,43 +10,54 @@ import {
   InputDataEstilizado
 } from './styled'
 
-const arrayCheckBox = ['Picpay', 'Pix', 'Credito', 'Boleto']
-
 export default class MainCadastro extends React.Component {
 
   state = {
     inputTitle: '',
     inputPrice: '',
     inputDescription: '',
-    inputPaymentMethods: [],
+    inputPaymentMethods: [
+      { payment: 'Paypal', isChecked: false },
+      { payment: 'Pix', isChecked: false },
+      { payment: 'Credito', isChecked: false },
+      { payment: 'Boleto', isChecked: false }
+    ],
     inputDueDate: ''
 
   }
 
-
-
-  handleChangeCheck = ((event) => {
-    if (event.target.checked) {
-      this.setState({ inputPaymentMethods: [...this.state.inputPaymentMethods, event.target.value] })
+  onClickCheckBox = (payment, index) => {
+    let newPaymentMethods = this.state.inputPaymentMethods
+    if (payment.isChecked) {
+      newPaymentMethods[index].isChecked = false
     } else {
-      this.setState(this.state.inputPaymentMethods.filter((checkbox) => {
-        return checkbox !== event.target.value
-      }))
+      newPaymentMethods[index].isChecked = true
     }
-  })
 
+    this.setState({ inputPaymentMethods: newPaymentMethods })
 
+  }
 
-  createJob = () => {
+  onClickIsCheckedTrue = () => {
+    const truePaymentMethods = this.state.inputPaymentMethods.filter((payment) => {
+      return payment.isChecked === true
+    }).map((payment) => {
+      return payment.payment
+    })
+    this.createJob(truePaymentMethods)
+  }
+
+   createJob = async (truePaymentMethods) => {
+    const body = {
+      title: this.state.inputTitle,
+      description: this.state.inputDescription,
+      price: Number(this.state.inputPrice),
+      paymentMethods: truePaymentMethods,
+      dueDate: this.state.inputDueDate
+      
+    }
     try {
-      api.post('/jobs', {
-        title: this.state.inputTitle,
-        description: this.state.inputDescription,
-        price: this.state.inputPrice,
-        paymentMethods: [...this.state.inputPaymentMethods],
-        dueDate: this.state.dueDate
-
-      })
+       await api.post('jobs', body)
       alert('Serviço cadastrado com sucesso!')
       this.setState({
         inputTitle: '',
@@ -55,22 +66,35 @@ export default class MainCadastro extends React.Component {
         inputPaymentMethods: [],
         inputDueDate: ''
 
-
       })
+      
     } catch (err) {
-      alert(err)
+      console.log(err.response.data)
+      
     }
 
-  }
-
-  checked = (checkbox) => {
-    this.state.inputPaymentMethods.includes(checkbox)
-  }
+  } 
 
 
   render() {
 
-    console.log(this.state.inputPaymentMethods)
+    console.log('titulo', this.state.inputTitle, 'descrição', this.state.inputDescription, 'preço', this.state.inputPrice, 'data', this.state.inputDueDate, 'pagamento', this.state.inputPaymentMethods)
+
+     console.log('Metodos de pagamento', this.state.inputPaymentMethods) 
+
+
+    const mapedPaymentMethods = this.state.inputPaymentMethods.map((payment, index) => {
+      return <li key={index}>
+        <input
+          type='checkbox'
+          checked={payment.isChecked}
+          onChange={() => this.onClickCheckBox(payment, index)}
+        />
+        {payment.payment}
+
+      </li>
+
+    })
 
     return (
       <MainContainer>
@@ -86,23 +110,7 @@ export default class MainCadastro extends React.Component {
         <ContainerPagamento>
           <h4>Métodos de pagamento</h4>
 
-          {arrayCheckBox.map((checkbox) => {
-            return (
-              <label key={checkbox}>
-                <input
-                  type='checkbox'
-                  value={checkbox}
-                  checked={this.checked(checkbox)}
-                  onChange={this.handleChangeCheck}
-
-                />
-                {checkbox}
-              </label>
-
-            )
-          })
-          }
-
+          {mapedPaymentMethods}
 
           <h4>Valor</h4>
           <input
@@ -114,18 +122,20 @@ export default class MainCadastro extends React.Component {
         </ContainerPagamento>
         <h4>Prazo</h4>
         <InputDataEstilizado
-          id="date"
-          type="date"
+          
+          type='date'
           value={this.state.inputDueDate}
           onChange={e => this.setState({ inputDueDate: e.target.value })}
         />
         <h4>Descrição do serviço:</h4>
-        <InputDescricao
+
+        <InputDescricao cols="30" rows="5"
           value={this.state.inputDescription}
           onChange={e => this.setState({ inputDescription: e.target.value })}
         />
-        <BotaoOferecerServico /* onClick={this.createJob} */>Oferecer serviço!</BotaoOferecerServico>
-        {/*Botão acima é sugestão de implementação*/}
+
+        <BotaoOferecerServico onClick={this.onClickIsCheckedTrue}>Oferecer serviço!</BotaoOferecerServico>
+
       </MainContainer>
     )
   }
