@@ -12,7 +12,7 @@ export default class PageList extends React.Component {
     servicos: [],
     pesquisa: '',
     filtroSelect: '',
-    maxFilter: 10000,
+    maxFilter: 1000000,
     minFilter: 0
   }
 
