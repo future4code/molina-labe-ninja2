@@ -70,4 +70,13 @@ const Line = styled.hr`
   width: 100%;
 `
 
-export { Container, Title, Description, Price, Span, Line }
+const ContainerButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const ContainerPayments = styled.div`
+  display: flex;
+`
+
+export { Container, Title, Description, Price, Span, Line, ContainerButton, ContainerPayments }

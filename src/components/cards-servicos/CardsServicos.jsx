@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Title, Description, Price, Span, Line } from './styled'
+import { Container, Title, Description, Price, Span, Line, ContainerButton, ContainerPayments } from './styled'
 import { FaMoneyCheckAlt } from "react-icons/fa";
 
 export default class CardsServicos extends React.Component {
@@ -15,13 +15,19 @@ export default class CardsServicos extends React.Component {
         </Description>
         <Price>
           <p>R$ {this.props.preco},00</p>
-          <div>
-            {this.props.paymentMethods.map((method) => {
-              return (
-                <p><Span color={'var(--purple-color)'}><FaMoneyCheckAlt/></Span>{method}</p>
-              )
-            })}
-          </div>
+          <ContainerButton>
+            <ContainerPayments>
+              {this.props.paymentMethods.map((method) => {
+                return (
+                  <p><Span color={'var(--purple-color)'}><FaMoneyCheckAlt/></Span>{method}</p>
+                )
+              })}
+            </ContainerPayments>
+
+            <div>
+              <button onClick={this.props.onClickAdd}>Add ao carrinho</button>
+            </div> 
+          </ContainerButton>
         </Price>
         <Line/>
       </Container>

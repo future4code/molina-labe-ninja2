@@ -6,13 +6,12 @@ export default class Cart extends React.Component {
   render() {
     return (
       <>
-        <Main>
-          <p><span>x</span>0</p>
+        <Main key={this.props.id}>
           <div>
-            <p><span>Serviço:</span> Desenvolvimento de software baseado em capturas de tela/pixel</p>
+            <h4>{this.props.title}</h4>
           </div>
-          <Price>R$ 00,00</Price>
-          <Button><FaTrash/></Button>
+          <Price>{this.props.price}</Price>
+          <Button onClick={this.props.onClickDelete}><FaTrash/></Button>
         </Main>
         <Line/>
       </>
