@@ -3,7 +3,7 @@ import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import Home from '../components/home/Home'
 import MainCadastro from '../components/main-cadastro/MainCadastro'
-import { Container, GlobalStyle } from './styled'
+import { Container, GlobalStyle, Line } from './styled'
 import PageList from '../components/main-list/PageList'
 
 export default class App extends React.Component {
@@ -48,7 +48,7 @@ export default class App extends React.Component {
 					renderMainCadastro={this.renderMainCadastro}
 					renderPageList={this.renderPageList}
 				/>
-
+        <Line/>
 				{this.changePage()}
 				<Footer />
 			</Container>
