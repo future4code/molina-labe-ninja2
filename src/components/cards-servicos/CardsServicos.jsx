@@ -3,15 +3,15 @@ import { Container, Title, Description, Price, Span, Line, ContainerButton, Cont
 import { FaMoneyCheckAlt } from "react-icons/fa";
 
 export default class CardsServicos extends React.Component {
-	render(){
-		return(
+	render() {
+		return (
 			<Container>
         <Title>
           <h2>{this.props.titulo}</h2>
         </Title>
           <p>Prazo: {this.props.prazo}</p>
         <Description>
-          <p>{this.props.description}</p>
+          <p>{this.props.descricao}</p>
         </Description>
         <Price>
           <p>R$ {this.props.preco},00</p>
@@ -19,13 +19,16 @@ export default class CardsServicos extends React.Component {
             <ContainerPayments>
               {this.props.paymentMethods.map((method) => {
                 return (
-                  <p><Span color={'var(--purple-color)'}><FaMoneyCheckAlt/></Span>{method}</p>
+                  <div className="payment" key={method}>
+                    <Span color={'var(--purple-color)'}><FaMoneyCheckAlt/></Span>
+                    <p>{method}</p>
+                  </div>
                 )
               })}
             </ContainerPayments>
 
             <div>
-              <button onClick={this.props.onClickAdd}>Add ao carrinho</button>
+              <button title="Adionar o serviço ao carrinho" onClick={this.props.onClickAdd}>Contratar</button>
             </div> 
           </ContainerButton>
         </Price>

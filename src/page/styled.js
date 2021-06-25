@@ -4,6 +4,23 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: lightgray;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(211, 211, 211, 0.7);
+    }
   }
 
   body {

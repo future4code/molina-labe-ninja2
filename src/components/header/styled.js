@@ -46,6 +46,12 @@ const ButtonsContainer = styled.div`
     color: var(--purple-color);
     background-color: white;
     cursor: pointer;
+    transition: 0.3s;
+
+    :hover {
+      opacity: 0.8;
+      box-shadow: 2px 2px var(--purple-color);
+    }
   }
 `
 

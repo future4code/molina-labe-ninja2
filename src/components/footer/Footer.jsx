@@ -44,28 +44,28 @@ class Footer extends React.Component {
                 <h2>Redes Sociais</h2>
                 <Redes>
                   <li>
-                    <a href="https://pt-br.facebook.com/" target='_blank'>
+                    <a href="https://pt-br.facebook.com/" target='_blank' rel="noopener noreferrer">
                       <span><FaFacebook /></span>
                       <p>Facebook</p>
                     </a>
                   </li>
 
                   <li>
-                    <a href="https://www.instagram.com/" target='_blank'>
+                    <a href="https://www.instagram.com/" target='_blank' rel="noopener noreferrer">
                       <span><FaInstagram /></span>
                       <p>Instagram</p>
                     </a>
                   </li>
 
                   <li>
-                    <a href="https://twitter.com/" target='_blank'>
+                    <a href="https://twitter.com/" target='_blank' rel="noopener noreferrer">
                       <span><FaTwitter /></span>
                       <p>Twitter</p>
                     </a>
                   </li>
 
                   <li>
-                    <a href="https://www.youtube.com/" target='_blank'>
+                    <a href="https://www.youtube.com/" target='_blank' rel="noopener noreferrer">
                       <span><FaYoutube /></span>
                       <p>Youtube</p>
                     </a>
