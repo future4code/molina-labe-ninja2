@@ -60,8 +60,14 @@ export default class MainCadastro extends React.Component {
         inputTitle: '',
         inputPrice: '',
         inputDescription: '',
-        inputPaymentMethods: [],
-        inputDueDate: ''
+        inputDueDate: '',
+        inputPaymentMethods: [
+          { payment: 'Paypal', isChecked: false },
+          { payment: 'Pix', isChecked: false },
+          { payment: 'Credito', isChecked: false },
+          { payment: 'Boleto', isChecked: false }
+        ]
+
       })
 
     } catch (err) {
