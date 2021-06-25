@@ -28,21 +28,32 @@ const InputServico = styled.input`
 `
 
 const BotaoOferecerServico = styled.button`
-  margin: 10px;
-  width: 100px;
-  height: 49px;
+  margin-top: 20px;
+  border: none;
+  color: white;
+  background-color: #40CD28;
+  padding: 10px 20px;
+  width: 160px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: 0.3s;
+  :hover {
+    opacity: 1;
+    box-shadow: 2px 2px 5px rgba(64, 205, 40, 0.6);
+    }
+  
 `
 
 const InputDataEstilizado = styled.input`
   width: 141px;
   height: 15px;
   padding: 2px;
+  margin-top: 10px;
   cursor: pointer;
 `
 
 const DescriçãoServiço = styled.h4`
-margin-top: 30px;
+margin-top: 20px;
 `
 
 const Titulo = styled.h1`
