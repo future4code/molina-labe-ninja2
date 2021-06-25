@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const InputDescricao = styled.input`
+const InputDescricao = styled.textarea`
   width: 400px;
   height: 200px;
 `

@@ -19,14 +19,37 @@ export default class MainCadastro extends React.Component {
     inputPrice: '',
     inputDescription: '',
     inputPaymentMethods: [
-      { pagamento: 'Paypal', isChecked: false },
-      { pagamento: 'Pix', isChecked: false },
-      { pagamento: 'Credito', isChecked: false },
-      { pagamento: 'Boleto', isChecked: false }
+      { payment: 'Paypal', isChecked: false },
+      { payment: 'Pix', isChecked: false },
+      { payment: 'Credito', isChecked: false },
+      { payment: 'Boleto', isChecked: false }
     ],
     inputDueDate: ''
 
   }
+
+  onClickCheckBox = (payment, index) => {
+    let newPaymentMethods = this.state.inputPaymentMethods
+    if (payment.isChecked) {
+      newPaymentMethods[index].isChecked = false
+    } else {
+      newPaymentMethods[index].isChecked = true
+    }
+
+    this.setState({ inputPaymentMethods: newPaymentMethods })
+
+  }
+
+  onClickIsCheckedTrue = () => {
+    const truePaymentMethods = this.state.inputPaymentMethods.map((payment) => {
+      return payment.isChecked === true
+    }).map((payment) => {
+      return payment.payment
+    })
+    return truePaymentMethods
+  }
+
+
 
 
 
@@ -42,20 +65,17 @@ export default class MainCadastro extends React.Component {
 
 
 
-  createJob = () => {
 
-    const paymentsMethods = this.state.paymentsMethods.filter((pagamento) => {
-      return pagamento.isChecked === true
-    }).map((pagamento) => {
-      return pagamento.value
-    })
+  createJob = (truePaymentMethods) => {
+
+
 
     try {
       api.post('/jobs', {
         title: this.state.inputTitle,
         description: this.state.inputDescription,
         price: this.state.inputPrice,
-        paymentMethods: paymentsMethods,
+        paymentMethods: truePaymentMethods,
         dueDate: this.state.dueDate
 
       })
@@ -75,34 +95,29 @@ export default class MainCadastro extends React.Component {
 
   }
 
-  onClickCheckbox = (pagamento, index) => {
-    let checkedPaymentMethods = this.state.paymentMethods
-    if (pagamento.isChecked) {
-      checkedPaymentMethods[index].isChecked = false
-    } else {
-      checkedPaymentMethods[index].isChecked = true
-    }
-    this.setState({ paymentMethods: checkedPaymentMethods })
-
-  }
-
 
 
   render() {
 
-    const mapedPaymentMethods = this.state.inputPaymentMethods.map((pagamento, index) => {
-      return <ul key={index}>
+    console.log('Metodos de pagamento', this.state.inputPaymentMethods)
+    console.log('DESCRIÇÃO', this.state.inputDescription)
+
+    const mapedPaymentMethods = this.state.inputPaymentMethods.map((payment, index) => {
+      return <li key={index}>
         <input
           type='checkbox'
-          onClick={() => this.onClickCheckbox(pagamento, index)}
-
+          checked={payment.isChecked}
+          onChange={() => this.onClickCheckBox(payment, index)}
         />
+        {payment.payment}
 
-      </ul>
+
+      </li>
+
 
     })
 
-    console.log(this.state.inputPaymentMethods)
+
 
     return (
       <MainContainer>
@@ -118,20 +133,9 @@ export default class MainCadastro extends React.Component {
         <ContainerPagamento>
           <h4>Métodos de pagamento</h4>
 
-          {/*   {arrayCheckBox.map((checkbox) => {
-            return (
-              <label key={checkbox}>
-                <input
-                  type='checkbox'
-                />
-                {checkbox}
-              </label>
-
-            )
-          })
-          } */}
-
           {mapedPaymentMethods}
+
+
 
 
           <h4>Valor</h4>
@@ -150,12 +154,17 @@ export default class MainCadastro extends React.Component {
           onChange={e => this.setState({ inputDueDate: e.target.value })}
         />
         <h4>Descrição do serviço:</h4>
-        <InputDescricao
-          value={this.state.inputDescription}
-          onChange={e => this.setState({ inputDescription: e.target.value })}
+        
+        <InputDescricao cols="30" rows="5"
+        value={this.state.inputDescription}
+        onChange={e => this.setState({ inputDescription: e.target.value })}
+        
         />
+
+       
+
         <BotaoOferecerServico onClick={this.createJob}>Oferecer serviço!</BotaoOferecerServico>
-        {/*Botão acima é sugestão de implementação*/}
+        
       </MainContainer>
     )
   }
