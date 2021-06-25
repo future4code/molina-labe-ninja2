@@ -1,6 +1,6 @@
 import React from 'react'
-import api from '../../services/api'
-/* import {baseURL, headers} from '../src/services/api'  */
+ import api from '../../services/api' 
+
 import {
   InputDescricao,
   MainContainer,
@@ -9,8 +9,6 @@ import {
   BotaoOferecerServico,
   InputDataEstilizado
 } from './styled'
-/* 
-const arrayCheckBox = ['Picpay', 'Pix', 'Credito', 'Boleto'] */
 
 export default class MainCadastro extends React.Component {
 
@@ -41,44 +39,25 @@ export default class MainCadastro extends React.Component {
   }
 
   onClickIsCheckedTrue = () => {
-    const truePaymentMethods = this.state.inputPaymentMethods.map((payment) => {
+    const truePaymentMethods = this.state.inputPaymentMethods.filter((payment) => {
       return payment.isChecked === true
     }).map((payment) => {
       return payment.payment
     })
-    return truePaymentMethods
+    this.createJob(truePaymentMethods)
   }
 
-
-
-
-
-  /* handleChangeCheck = ((event) => {
-    if (event.target.checked) {
-      this.setState({ inputPaymentMethods: [...this.state.inputPaymentMethods, event.target.value] })
-    } else {
-      this.setState(this.state.inputPaymentMethods.filter((checkbox) => {
-        return checkbox !== event.target.value
-      }))
+   createJob = async (truePaymentMethods) => {
+    const body = {
+      title: this.state.inputTitle,
+      description: this.state.inputDescription,
+      price: Number(this.state.inputPrice),
+      paymentMethods: truePaymentMethods,
+      dueDate: this.state.inputDueDate
+      
     }
-  }) */
-
-
-
-
-  createJob = (truePaymentMethods) => {
-
-
-
     try {
-      api.post('/jobs', {
-        title: this.state.inputTitle,
-        description: this.state.inputDescription,
-        price: this.state.inputPrice,
-        paymentMethods: truePaymentMethods,
-        dueDate: this.state.dueDate
-
-      })
+       await api.post('jobs', body)
       alert('Serviço cadastrado com sucesso!')
       this.setState({
         inputTitle: '',
@@ -87,20 +66,22 @@ export default class MainCadastro extends React.Component {
         inputPaymentMethods: [],
         inputDueDate: ''
 
-
       })
+      
     } catch (err) {
-      alert(err)
+      console.log(err.response.data)
+      
     }
 
-  }
-
+  } 
 
 
   render() {
 
-    console.log('Metodos de pagamento', this.state.inputPaymentMethods)
-    console.log('DESCRIÇÃO', this.state.inputDescription)
+    console.log('titulo', this.state.inputTitle, 'descrição', this.state.inputDescription, 'preço', this.state.inputPrice, 'data', this.state.inputDueDate, 'pagamento', this.state.inputPaymentMethods)
+
+     console.log('Metodos de pagamento', this.state.inputPaymentMethods) 
+
 
     const mapedPaymentMethods = this.state.inputPaymentMethods.map((payment, index) => {
       return <li key={index}>
@@ -111,13 +92,9 @@ export default class MainCadastro extends React.Component {
         />
         {payment.payment}
 
-
       </li>
 
-
     })
-
-
 
     return (
       <MainContainer>
@@ -135,9 +112,6 @@ export default class MainCadastro extends React.Component {
 
           {mapedPaymentMethods}
 
-
-
-
           <h4>Valor</h4>
           <input
             placeholder="Valor"
@@ -148,23 +122,20 @@ export default class MainCadastro extends React.Component {
         </ContainerPagamento>
         <h4>Prazo</h4>
         <InputDataEstilizado
-          id="date"
-          type="date"
+          
+          type='date'
           value={this.state.inputDueDate}
           onChange={e => this.setState({ inputDueDate: e.target.value })}
         />
         <h4>Descrição do serviço:</h4>
-        
+
         <InputDescricao cols="30" rows="5"
-        value={this.state.inputDescription}
-        onChange={e => this.setState({ inputDescription: e.target.value })}
-        
+          value={this.state.inputDescription}
+          onChange={e => this.setState({ inputDescription: e.target.value })}
         />
 
-       
+        <BotaoOferecerServico onClick={this.onClickIsCheckedTrue}>Oferecer serviço!</BotaoOferecerServico>
 
-        <BotaoOferecerServico onClick={this.createJob}>Oferecer serviço!</BotaoOferecerServico>
-        
       </MainContainer>
     )
   }
