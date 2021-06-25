@@ -95,7 +95,7 @@ export default class Home extends React.Component {
         </ContainerSectionSecond>
         <ContainerGeralSectionThird>
           <div className="titleThird">
-            <h2>Como a LabeNinjas pode te ajudar?</h2>
+            <h2>Como a <span>LabeNinjas</span> pode te ajudar?</h2>
           </div>
           <TerceiraSecao>
             <div className="imageThird">
@@ -105,7 +105,7 @@ export default class Home extends React.Component {
             <div className="containerThird">
               <h4>Encontre o serviço que precise</h4>
               <p>
-                É a sua primeira vez na LabeNinjas? Publique um serviço e tenha
+                É a sua primeira vez na <span>LabeNinjas</span>? Publique um serviço e tenha
                 acesso as propostas dos freelancers para por suas ideias para trabalhar.
               </p>
               <Botao

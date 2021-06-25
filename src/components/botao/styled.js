@@ -9,6 +9,12 @@ const Button = styled.button`
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.5s;
+
+  :hover {
+    opacity: 0.9;
+    box-shadow: 2px 2px 5px rgba(129, 102, 203, 0.6);
+  }
 `
 
 export { Button }

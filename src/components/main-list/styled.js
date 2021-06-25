@@ -3,18 +3,31 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 80px 160px 40px;
-  border: 1px solid red;
+  width: 78%;
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
 `
 
 const CardList = styled.div`
   display: flex;
   flex-direction: column;
+  min-width: 800px;
+
+  .ordenacao {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+  }
 `
 
 const ContainerCart = styled.div`
-  max-width: 450px;
-  height: 200px;
+  min-width: 400px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,4 +44,12 @@ const ContainerCart = styled.div`
   }
 `
 
-export { Container, CardList, ContainerCart }
+const Line = styled.hr`
+  margin-bottom: 8%;
+  height: 0.01rem;
+  border: none;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+`
+
+export { Container, CardList, ContainerCart, Line }
