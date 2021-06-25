@@ -12,8 +12,9 @@ export default class PageList extends React.Component {
     servicos: [],
     pesquisa: '',
     filtroSelect: '',
-    maxFilter: 1000000,
-    minFilter: 0
+    maxFilter: 10000,
+    minFilter: 0,
+    carrinho: []
   }
 
   componentDidMount(){
@@ -75,9 +76,34 @@ export default class PageList extends React.Component {
    }
   }
 
+  addCarrinho = ((id, title, price)=>{
+    const novoItem ={
+      id: id,
+      titulo: title,
+      preco: price
+    }
+
+    const novoCarrinho = [novoItem, ...this.state.carrinho]
+
+    this.setState({
+      carrinho: novoCarrinho
+    })
+    console.log(novoCarrinho)
+  })
+
+  delete = ((id)=>{
+    const novoCarrinho = this.state.carrinho.filter((idItem)=>{
+      return id !== idItem.id
+    })
+
+    this.setState({
+      carrinho: novoCarrinho
+    })
+  })
+
   render() {
     this.ordenaSeletor()
-
+    console.log(this.state.servicos)
     const servicosFiltrados = this.state.servicos
       .filter((servico) => servico.title.toLowerCase().includes(this.state.pesquisa.toLowerCase()))
       .filter((servico) => servico.price < this.state.maxFilter)
@@ -108,16 +134,26 @@ export default class PageList extends React.Component {
                 preco={price}                 
                 descricao={description}                 
                 paymentMethods={paymentMethods}  
-                prazo={dueDate}         
-            />             
+                prazo={dueDate}
+                onClickAdd={()=>this.addCarrinho(id, title, price)}         
+              />             
             )           
             })}
 
         </CardList>
         <ContainerCart>
           <h2>Carrinho:</h2>
-          <Cart />
-          <Cart />
+          {this.state.carrinho.map(({id, titulo, preco})=>{
+            return(
+              <Cart
+                id={id}
+                title={titulo}
+                price={preco}
+                onClickDelete={()=>this.delete(id)}
+              />
+            )
+          })}
+          
         </ContainerCart>
       </Container>
     )
