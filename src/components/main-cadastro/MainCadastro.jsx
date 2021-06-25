@@ -6,7 +6,11 @@ import {
   ContainerPagamento,
   InputServico,
   BotaoOferecerServico,
-  InputDataEstilizado
+  InputDataEstilizado,
+  DescriçãoServiço,
+  Titulo,
+  PagamentoContainer,
+  Checkbox
 } from './styled'
 
 export default class MainCadastro extends React.Component {
@@ -60,12 +64,18 @@ export default class MainCadastro extends React.Component {
         inputTitle: '',
         inputPrice: '',
         inputDescription: '',
-        inputPaymentMethods: [],
-        inputDueDate: ''
+        inputDueDate: '',
+        inputPaymentMethods: [
+          { payment: 'Paypal', isChecked: false },
+          { payment: 'Pix', isChecked: false },
+          { payment: 'Credito', isChecked: false },
+          { payment: 'Boleto', isChecked: false }
+        ]
+
       })
 
     } catch (err) {
-      console.log(err.response.data)
+      alert(err.response.data)
     }
   }
 
@@ -73,7 +83,7 @@ export default class MainCadastro extends React.Component {
 
     const mapedPaymentMethods = this.state.inputPaymentMethods.map((payment, index) => {
       return <li key={index}>
-        <input
+        <Checkbox
           type='checkbox'
           checked={payment.isChecked}
           onChange={() => this.onClickCheckBox(payment, index)}
@@ -85,6 +95,9 @@ export default class MainCadastro extends React.Component {
 
     return (
       <MainContainer>
+
+        <Titulo>Publique aqui a sua oferta de serviço!</Titulo>
+
         <h4>
           Nome do Serviço
         </h4>
@@ -95,10 +108,12 @@ export default class MainCadastro extends React.Component {
         />
         <ContainerPagamento>
           <h4>Métodos de pagamento</h4>
+          <PagamentoContainer>
           {mapedPaymentMethods}
+          </PagamentoContainer>
           <h4>Valor</h4>
           <input
-            placeholder="Valor"
+            placeholder="R$"
             value={this.state.inputPrice}
             onChange={e => this.setState({ inputPrice: e.target.value })}
           />
@@ -110,7 +125,7 @@ export default class MainCadastro extends React.Component {
           value={this.state.inputDueDate}
           onChange={e => this.setState({ inputDueDate: e.target.value })}
         />
-        <h4>Descrição do serviço:</h4>
+        <DescriçãoServiço>Descrição do serviço:</DescriçãoServiço>
 
         <InputDescricao cols="30" rows="5"
           value={this.state.inputDescription}
