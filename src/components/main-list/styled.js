@@ -17,11 +17,16 @@ const CardList = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 800px;
+  
 
   .ordenacao {
     display: flex;
     justify-content: flex-end;
     width: 90%;
+  }
+
+  @media only screen and (min-width: 992px){
+    min-width: 686px;
   }
 `
 
@@ -42,6 +47,8 @@ const ContainerCart = styled.div`
     margin-left: 40px;
     margin-bottom: 10px;
   }
+
+ 
 `
 
 const Line = styled.hr`
