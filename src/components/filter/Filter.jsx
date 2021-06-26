@@ -7,7 +7,7 @@ export default class Filter extends React.Component {
   render() {
     return (
       <MainContainer>
-        <h2><span><FiFilter /></span> Carrinho</h2>
+        <h2><span><FiFilter /></span> Filtro</h2>
         <Line />
         <div className='filter'>
           <ItemContainer>
