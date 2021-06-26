@@ -1,6 +1,5 @@
 import React from 'react'
 import { IoCartOutline } from 'react-icons/io5'
-
 import api from '../../services/api'
 import CardServicos from '../cards-servicos/CardsServicos'
 import Filter from '../filter/Filter'
@@ -93,6 +92,8 @@ export default class PageList extends React.Component {
       this.setState({
         carrinho: novoCarrinho
       })
+
+      alert('Serviço adicionado ao carrinho')
     }else{
       let existe = true
       for(let item of this.state.carrinho){
@@ -116,6 +117,7 @@ export default class PageList extends React.Component {
         this.setState({
           carrinho: novoCarrinho
         })
+        alert('Serviço adicionado ao carrinho')
       }else{
         alert('Serviço ja contratado')
       }
