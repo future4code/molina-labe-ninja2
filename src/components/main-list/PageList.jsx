@@ -81,27 +81,49 @@ export default class PageList extends React.Component {
   }
 
   addCarrinho = ((id, title, price) => {
-    const novoItem = {
-      id: id,
-      titulo: title,
-      preco: price
+    if(this.state.carrinho.length < 1){
+      const novoItem = {
+        id: id,
+        titulo: title,
+        preco: price
+      }
+      const novoCarrinho = [novoItem, ...this.state.carrinho]
+      this.setState({
+        carrinho: novoCarrinho
+      })
+    }else{
+      let existe = true
+      for(let item of this.state.carrinho){
+        if(id === item.id){
+          existe = true
+          break
+        }else{
+          existe = false
+        }
+      }
+      if(!existe){
+        const novoItem = {
+          id: id,
+          titulo: title,
+          preco: price
+        }
+        const novoCarrinho = [novoItem, ...this.state.carrinho]
+        this.setState({
+          carrinho: novoCarrinho
+        })
+      }else{
+        alert('Serviço ja contratado')
+      }
     }
-
-    const novoCarrinho = [novoItem, ...this.state.carrinho]
-
-    this.setState({
-      carrinho: novoCarrinho
-    })
   })
-
   delete = ((id) => {
     const novoCarrinho = this.state.carrinho.filter((idItem) => {
       return id !== idItem.id
     })
-
     this.setState({
       carrinho: novoCarrinho
     })
+    alert('Serviço excluído do carrinho')
   })
 
   render() {
@@ -139,7 +161,7 @@ export default class PageList extends React.Component {
                   preco={price}
                   descricao={description}
                   paymentMethods={paymentMethods}
-                  prazo={dueDate}
+                  prazo={dueDate.slice(0,10)}
                   onClickAdd={() => this.addCarrinho(id, title, price)}
                 />
               )
