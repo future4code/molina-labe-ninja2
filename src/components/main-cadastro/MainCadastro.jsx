@@ -12,9 +12,7 @@ import {
   PagamentoContainer,
   Checkbox
 } from './styled'
-
 export default class MainCadastro extends React.Component {
-
   state = {
     inputTitle: '',
     inputPrice: '',
@@ -27,7 +25,6 @@ export default class MainCadastro extends React.Component {
     ],
     inputDueDate: ''
   }
-
   onClickCheckBox = (payment, index) => {
     let newPaymentMethods = this.state.inputPaymentMethods
     if (payment.isChecked) {
@@ -35,10 +32,8 @@ export default class MainCadastro extends React.Component {
     } else {
       newPaymentMethods[index].isChecked = true
     }
-
     this.setState({ inputPaymentMethods: newPaymentMethods })
   }
-
   onClickIsCheckedTrue = () => {
     const truePaymentMethods = this.state.inputPaymentMethods.filter((payment) => {
       return payment.isChecked === true
@@ -47,7 +42,6 @@ export default class MainCadastro extends React.Component {
     })
     this.createJob(truePaymentMethods)
   }
-
   createJob = async (truePaymentMethods) => {
     const body = {
       title: this.state.inputTitle,
@@ -55,7 +49,6 @@ export default class MainCadastro extends React.Component {
       price: Number(this.state.inputPrice),
       paymentMethods: truePaymentMethods,
       dueDate: this.state.inputDueDate
-
     }
     try {
       await api.post('jobs', body)
@@ -71,16 +64,12 @@ export default class MainCadastro extends React.Component {
           { payment: 'Credito', isChecked: false },
           { payment: 'Boleto', isChecked: false }
         ]
-
       })
-
     } catch (err) {
       console.log(err.response.data)
     }
   }
-
   render() {
-
     const mapedPaymentMethods = this.state.inputPaymentMethods.map((payment, index) => {
       return <li key={index}>
         <Checkbox
@@ -90,14 +79,10 @@ export default class MainCadastro extends React.Component {
         />
         {payment.payment}
       </li>
-
     })
-
     return (
       <MainContainer>
-
         <Titulo>Publique aqui a sua oferta de serviço!</Titulo>
-
         <h4>
           Nome do Serviço
         </h4>
@@ -120,13 +105,11 @@ export default class MainCadastro extends React.Component {
         </ContainerPagamento>
         <h4>Prazo</h4>
         <InputDataEstilizado
-
           type='date'
           value={this.state.inputDueDate}
           onChange={e => this.setState({ inputDueDate: e.target.value })}
         />
         <DescriçãoServiço>Descrição do serviço:</DescriçãoServiço>
-
         <InputDescricao cols="30" rows="5"
           value={this.state.inputDescription}
           onChange={e => this.setState({ inputDescription: e.target.value })}
