@@ -75,7 +75,7 @@ export default class MainCadastro extends React.Component {
       })
 
     } catch (err) {
-      alert(err.response.data)
+      console.log(err.response.data)
     }
   }
 
