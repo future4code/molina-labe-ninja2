@@ -12,6 +12,7 @@
     "jss": "^10.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hot-toast": "^2.0.0",
     "react-icons": "^4.2.0",
     "react-jss": "8.0.0",
     "react-scripts": "^3.4.4",
@@ -37,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "surge": "^0.23.0"
   }
 }

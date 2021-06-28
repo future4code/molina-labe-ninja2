@@ -33,7 +33,7 @@ Projeto criado com intuito de criar uma startup, destinada à busca e oferta de 
 
 ## :sparkles: Surge ##
 
-<a href="http://" target="_blank">https://slippery-town.surge.sh/</a>
+<a href="https://successful-action.surge.sh/" target="_blank">labeninjas.com.br</a>
 
 ## :rocket: Tecnologias ##
 
@@ -43,6 +43,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [React](https://pt-br.reactjs.org/)
 - [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html)
 - [Styled-Components](https://styled-components.com/)
+- [Toast](https://react-hot-toast.com/)
 
 ## :white_check_mark: Pré requisitos ##
 

@@ -1,4 +1,6 @@
 import React from 'react'
+import toast  from 'react-hot-toast';
+
 import { IoCartOutline } from 'react-icons/io5'
 import api from '../../services/api'
 import CardServicos from '../cards-servicos/CardsServicos'
@@ -44,7 +46,7 @@ export default class PageList extends React.Component {
       })
 
     } catch (error) {
-      alert(error.message)
+      toast.error(error.message)
     }
   }
 
@@ -80,54 +82,50 @@ export default class PageList extends React.Component {
   }
 
   addCarrinho = ((id, title, price) => {
-    if(this.state.carrinho.length < 1){
+    if (this.state.carrinho.length < 1) {
       const novoItem = {
         id: id,
         titulo: title,
         preco: price
       }
-  
+
       const novoCarrinho = [novoItem, ...this.state.carrinho]
-  
 
       this.setState({
         carrinho: novoCarrinho
       })
 
-      alert('Serviço adicionado ao carrinho')
-    }else{
+      toast.success('Serviço adicionado ao carrinho')
+    } else {
       let existe = true
-      for(let item of this.state.carrinho){
-        if(id === item.id){
+      for (let item of this.state.carrinho) {
+        if (id === item.id) {
           existe = true
           break
-        }else{
+        } else {
           existe = false
         }
       }
 
-
-
-      if(!existe){
+      if (!existe) {
         const novoItem = {
           id: id,
           titulo: title,
           preco: price
         }
 
-    
         const novoCarrinho = [novoItem, ...this.state.carrinho]
-    
 
         this.setState({
           carrinho: novoCarrinho
         })
-        alert('Serviço adicionado ao carrinho')
-      }else{
-        alert('Serviço ja contratado')
+        toast.success('Serviço adicionado ao carrinho')
+      } else {
+        toast('Serviço ja contratado', { icon: '⚠️'})
       }
     }
   })
+
   delete = ((id) => {
     const novoCarrinho = this.state.carrinho.filter((idItem) => {
       return id !== idItem.id
@@ -136,9 +134,7 @@ export default class PageList extends React.Component {
       carrinho: novoCarrinho
     })
 
-
-
-    alert('Serviço excluído do carrinho')
+    toast.error('Serviço excluído do carrinho')
   })
 
   render() {
@@ -184,8 +180,8 @@ export default class PageList extends React.Component {
             })}
           </CardList>
           <ContainerCart>
-            <h2><span><IoCartOutline/></span> Carrinho</h2>
-            <Line/>
+            <h2><span><IoCartOutline /></span> Carrinho</h2>
+            <Line />
             {this.state.carrinho.map(({ id, titulo, preco }) => {
               return (
                 <Cart

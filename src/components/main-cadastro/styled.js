@@ -33,10 +33,11 @@ const BotaoOferecerServico = styled.button`
   color: white;
   background-color: #40CD28;
   padding: 10px 20px;
-  width: 160px;
+  width: 200px;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+
   :hover {
     opacity: 1;
     box-shadow: 2px 2px 5px rgba(64, 205, 40, 0.6);

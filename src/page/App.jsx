@@ -1,4 +1,6 @@
 import React from 'react'
+import { Toaster } from 'react-hot-toast'
+
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import Home from '../components/home/Home'
@@ -32,7 +34,6 @@ export default class App extends React.Component {
 
 	renderMainCadastro = () => {
 		this.setState({ pagina: 'MainCadastro' })
-		console.log('cliquei')
 	}
 
 	renderPageList = () => {
@@ -43,6 +44,10 @@ export default class App extends React.Component {
 
 		return (
 			<Container>
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
 				<GlobalStyle />
 				<Header
 					renderMainCadastro={this.renderMainCadastro}

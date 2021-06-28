@@ -1,4 +1,5 @@
 import React from 'react'
+import toast from 'react-hot-toast'
 import api from '../../services/api'
 import {
   InputDescricao,
@@ -25,6 +26,7 @@ export default class MainCadastro extends React.Component {
     ],
     inputDueDate: ''
   }
+  
   onClickCheckBox = (payment, index) => {
     let newPaymentMethods = this.state.inputPaymentMethods
     if (payment.isChecked) {
@@ -34,6 +36,7 @@ export default class MainCadastro extends React.Component {
     }
     this.setState({ inputPaymentMethods: newPaymentMethods })
   }
+
   onClickIsCheckedTrue = () => {
     const truePaymentMethods = this.state.inputPaymentMethods.filter((payment) => {
       return payment.isChecked === true
@@ -42,6 +45,7 @@ export default class MainCadastro extends React.Component {
     })
     this.createJob(truePaymentMethods)
   }
+
   createJob = async (truePaymentMethods) => {
     const body = {
       title: this.state.inputTitle,
@@ -52,7 +56,7 @@ export default class MainCadastro extends React.Component {
     }
     try {
       await api.post('jobs', body)
-      alert('Serviço cadastrado com sucesso!')
+      toast.success('Serviço cadastrado com sucesso!')
       this.setState({
         inputTitle: '',
         inputPrice: '',
@@ -66,9 +70,10 @@ export default class MainCadastro extends React.Component {
         ]
       })
     } catch (err) {
-      console.log(err.response.data)
+      toast.error(err.response.data)
     }
   }
+
   render() {
     const mapedPaymentMethods = this.state.inputPaymentMethods.map((payment, index) => {
       return <li key={index}>
