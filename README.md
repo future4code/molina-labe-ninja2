@@ -43,6 +43,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [React](https://pt-br.reactjs.org/)
 - [JSX](https://pt-br.reactjs.org/docs/introducing-jsx.html)
 - [Styled-Components](https://styled-components.com/)
+- [Toast](https://react-hot-toast.com/)
 
 ## :white_check_mark: Pré requisitos ##
 
