@@ -33,7 +33,7 @@ Projeto criado com intuito de criar uma startup, destinada à busca e oferta de 
 
 ## :sparkles: Surge ##
 
-<a href="http://" target="_blank">https://slippery-town.surge.sh/</a>
+<a href="https://successful-action.surge.sh/" target="_blank">labeninjas.com.br</a>
 
 ## :rocket: Tecnologias ##
 
